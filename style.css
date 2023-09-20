@@ -1,7 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
 *,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 376px;
+    min-height: 512px;
+    background: url(img/spiderman.jpg);
+    background-size: 105%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    border-radius: 30px;
+    z-index: 1;
+    transition: all 0.8s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    background-size: 175%;
+}
+
+.card:hover::before {
+    height: 100%;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 60%, rgba(0, 0, 0, 0.80) 100%);
+    border-radius: 30px;
+    z-index: -1;
+    transition: all 0.8s ease;
+}
+
+.card .box_content {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    padding: 30px;
+    position: absolute;
+    bottom: -180px;
+    transition: all 0.8s ease;
+}
+
+.card:hover .box_content {
+    bottom: 0px;
+}
+
+.card .box_content .box_title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-bottom: 16px;
+}
+
+.card .box_content .box_description {
+    position: relative;
+    color: #FFF;
+    margin-bottom: 20px;
+    opacity: 0;
+    bottom: -20px;
+    transition: all 0.8s ease 0.8s;
+}
+
+.card:hover .box_content .box_description {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card .box_content .btn {
+    position: relative;
+    bottom: -30px;
+    background-color: #C81D27;
+    border-radius: 16px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 0.8s ease 0.9s;
+}
+
+.card:hover .box_content .btn {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card .box_content .btn:hover {
+    background-color: #dd2935;
+}
+
+.card .box_content .btn:active {
+    background-color: #ac222b;
+}
+
+.card .box_content .btn:hover ion-icon {
+    animation: shake 3s ease-in-out infinite;
+}
+
+.card .box_content .btn ion-icon {
+    font-size: 24px;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-15deg);
+    }
+    3% {
+        transform: rotate(15deg);
+    }
+    6% {
+        transform: rotate(-15deg);
+    }
+    9% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.card .box_content .tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.card .box_content .tags .tag {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.card .box_content .tags .tag:not(:first-child) {
+    margin-left: 10px;
+}
+
+.card .box_content .tags .tag::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70%;
+    width: 1px;
+    background-color: #FFF;
+    opacity: 0.6;
+}
+
+.card .box_content .tags .tag:last-child:after {
+    display: none;
+} 
+
+.card .box_content .tags .tag_p {
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.card .box_content .tags .tag.blue {
+    background-color: #4664FF;
+}
+
+.card .box_content .tags .tag.orange {
+    background-color: #FF630C;
 }
